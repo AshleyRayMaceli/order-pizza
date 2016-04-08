@@ -1,11 +1,20 @@
 // Business Logic
-function Pizza (size, toppings) {
-  this.pizzaSize = size;
+function Pizza (toppings, size, chosen) {
   this.pizzaToppings = toppings;
+  this.pizzaSize = size;
+  this.chosenToppings = chosen;
 }
 
-Pizza.prototype.costOfPizza = function (size, toppings) {
-  var pizzaPrice = this.pizzaSize + this.pizzaToppings;
+Pizza.prototype.costOfToppings = function (chosen, toppings) {
+    for (i = 0; i < this.chosenToppings.length; i += 1) {
+      if (this.chosenToppings[i].checked) {
+        this.pizzaToppings += 1;
+      }
+    }
+}
+
+Pizza.prototype.costOfPizza = function (toppings, size) {
+  var pizzaPrice = this.pizzaToppings + this.pizzaSize;
   return pizzaPrice;
 }
 
@@ -16,15 +25,11 @@ $(document).ready(function(){
 
     var inputtedPizzaSize = parseInt( $("select.new-pizza-size").val() );
     var inputtedPizzaToppings = 0;
-
     var checkedBoxes = document.getElementsByName("toppings");
-    for (i = 0; i < checkedBoxes.length; i += 1) {
-      if (checkedBoxes[i].checked) {
-        inputtedPizzaToppings += 1;
-      }
-    }
 
-    var newPizza = new Pizza(inputtedPizzaSize, inputtedPizzaToppings);
+    var newPizza = new Pizza(inputtedPizzaToppings, inputtedPizzaSize, checkedBoxes);
+
+    newPizza.costOfToppings()
 
     $("h1#pizza-price").text("$" + newPizza.costOfPizza());
   });
@@ -36,8 +41,6 @@ $(document).ready(function(){
 // User picks one or more toppings
 // User selects size
 
-// radio checked buttons for multiple toppings?
-// use switches
 
 // for multiple toppings use a switch inside a FOR loop
 // interate through an array
