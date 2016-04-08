@@ -11,23 +11,17 @@ function Pizza (toppings, size, chosen) {
 }
 
 Pizza.prototype.costOfToppings = function (chosen, toppings) {
-    for (i = 0; i < this.chosenToppings.length; i += 1) {
-      if (this.chosenToppings[i].checked) {
-        this.pizzaToppings += 1;
-      }
+  for (i = 0; i < this.chosenToppings.length; i += 1) {
+    if (this.chosenToppings[i].checked) {
+      this.pizzaToppings += 1;
     }
+  }
 }
 
 Pizza.prototype.costOfPizza = function (toppings, size) {
   var pizzaPrice = this.pizzaToppings + this.pizzaSize;
-  //add pizza price to total price
   return pizzaPrice;
 }
-
-// Pizza.prototype.overallTotal = function () {
-//   var finalTotal = 0;
-//   finalTotal = finalTotal + newPizza.costOfPizza();
-// }
 
 function resetFields() {
   $("select.new-pizza-size").val("");
@@ -68,7 +62,7 @@ $(document).ready(function(){
     event.preventDefault();
 
     var newAllOrders = new AllOrders ();
-    var overallTotal = newAllOrders.costTotal
+    var overallTotal = newAllOrders.costTotal;
 
     $(".another-pizza").each(function() {
       var inputtedPizzaSize = parseInt( $(this).find( $("select.new-pizza-size") ) .val());

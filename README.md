@@ -14,7 +14,7 @@ _A webpage that utilizes JavaScript objects and jQuery to allow the user to orde
 
 ## Known Bugs
 
-_When prices for each pizza pie are shown, it does not display what that pizza pie consists of._
+_When prices for each pizza pie and total are shown, it does not display what each pizza pie consists of (size and toppings)._
 
 ## Support and contact details
 
