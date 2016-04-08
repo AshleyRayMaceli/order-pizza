@@ -5,7 +5,7 @@ function Pizza (size, toppings) {
 }
 
 Pizza.prototype.costOfPizza = function (size, toppings) {
-  var pizzaPrice = this.pizzaSize + this.toppings;
+  var pizzaPrice = this.pizzaSize + this.pizzaToppings;
   return pizzaPrice;
 }
 
@@ -20,7 +20,6 @@ $(document).ready(function(){
     var checkedBoxes = document.getElementsByName("toppings");
     for (i = 0; i < checkedBoxes.length; i += 1) {
       if (checkedBoxes[i].checked) {
-        // var allToppings = parseInt( $("") )
         inputtedPizzaToppings += 1;
       }
     }
@@ -28,10 +27,6 @@ $(document).ready(function(){
     var newPizza = new Pizza(inputtedPizzaSize, inputtedPizzaToppings);
 
     $("h1#pizza-price").text("$" + newPizza.costOfPizza());
-
-    console.log(inputtedPizzaSize);
-    console.log(inputtedPizzaToppings);
-    console.log(newPizza);
   });
 });
 
