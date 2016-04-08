@@ -1,13 +1,13 @@
 // Business Logic
 function AllOrders () {
   this.pizzaTotal = [];
+  this.costTotal = 0;
 }
 
 function Pizza (toppings, size, chosen) {
   this.pizzaToppings = toppings;
   this.pizzaSize = size;
   this.chosenToppings = chosen;
-  // this.pizzaTotal = [];
 }
 
 Pizza.prototype.costOfToppings = function (chosen, toppings) {
@@ -20,8 +20,14 @@ Pizza.prototype.costOfToppings = function (chosen, toppings) {
 
 Pizza.prototype.costOfPizza = function (toppings, size) {
   var pizzaPrice = this.pizzaToppings + this.pizzaSize;
+  //add pizza price to total price
   return pizzaPrice;
 }
+
+// Pizza.prototype.overallTotal = function () {
+//   var finalTotal = 0;
+//   finalTotal = finalTotal + newPizza.costOfPizza();
+// }
 
 function resetFields() {
   $("select.new-pizza-size").val("");
@@ -62,6 +68,7 @@ $(document).ready(function(){
     event.preventDefault();
 
     var newAllOrders = new AllOrders ();
+    var overallTotal = newAllOrders.costTotal
 
     $(".another-pizza").each(function() {
       var inputtedPizzaSize = parseInt( $(this).find( $("select.new-pizza-size") ) .val());
@@ -75,13 +82,14 @@ $(document).ready(function(){
       newPizza.costOfToppings();
 
       var pizzaNumber = newAllOrders.pizzaTotal.indexOf(newPizza);
-      console.log(pizzaNumber);
-      console.log(newAllOrders.pizzaTotal);
+      console.log(newAllOrders.costTotal);
 
-      $("#pizza-price").append("<li> Pizza " + (pizzaNumber + 1) + ": $" + newPizza.costOfPizza() + "</li>");
       $("#show-pizza-results").show();
+      $("#pizza-price").append("<li> Pizza " + (pizzaNumber + 1) + ": $" + newPizza.costOfPizza() + "</li>");
+      overallTotal = overallTotal + newPizza.costOfPizza();
     });
 
+    $("#complete-total").text("Your Total Order is $" + overallTotal);
     resetFields();
 
   });

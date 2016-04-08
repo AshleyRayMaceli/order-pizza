@@ -5,3 +5,7 @@
 #show-pizza-results {
   display: none;
 }
+
+li {
+  font-size: 30px;
+}
