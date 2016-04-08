@@ -20,6 +20,29 @@ Pizza.prototype.costOfPizza = function (toppings, size) {
 
 // User Interface Logic
 $(document).ready(function(){
+  $("#add-more-pizza").click(function(){
+    $("#another-pizza").append('<p>___________________________________</p>' +
+                              '<select class="form-control new-pizza-size">' +
+                               '<option id="size1" value="10">Small</option>' +
+                               '<option id="size2" value="15">Medium</option>' +
+                               '<option id="size3" value="20">Large</option>' +
+                               '</select>' +
+                               '<h2>Toppings:</h2>' +
+                               '<div class="checkbox">' +
+                               '<label><input type="checkbox" name="toppings" value="1">Topping 1</label>' +
+                               '</div>' +
+                               '<div class="checkbox">' +
+                               '<label><input type="checkbox" name="toppings" value="1">Topping 2</label>' +
+                               '</div>' +
+                               '<div class="checkbox">' +
+                               '<label><input type="checkbox" name="toppings" value="1">Topping 3</label>' +
+                               '</div>' +
+                               '<div class="checkbox">' +
+                               '<label><input type="checkbox" name="toppings" value="1">Topping 4</label>' +
+                               '</div>'
+    );
+  });
+
   $("#new-pizza-order").submit(function(event){
     event.preventDefault();
 
@@ -32,17 +55,6 @@ $(document).ready(function(){
     newPizza.costOfToppings()
 
     $("h1#pizza-price").text("$" + newPizza.costOfPizza());
+    $("#show-pizza-results").show();
   });
 });
-
-
-
-// User can order a pizza
-// User picks one or more toppings
-// User selects size
-
-
-// for multiple toppings use a switch inside a FOR loop
-// interate through an array
-// make empty array with corresponding number of empty spots for toppings ??
-// or just make every topping the same price, iterate through and add $1 for length of array

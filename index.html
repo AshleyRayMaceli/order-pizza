@@ -15,13 +15,12 @@
         <div class="col-md-6">
           <h2>Sizes:</h2>
           <form id="new-pizza-order">
-
+            <div id="another-pizza">
             <select class="form-control new-pizza-size">
               <option id="size1" value="10">Small</option>
               <option id="size2" value="15">Medium</option>
               <option id="size3" value="20">Large</option>
             </select>
-
 
             <h2>Toppings:</h2>
             <div class="checkbox">
@@ -36,8 +35,10 @@
             <div class="checkbox">
               <label><input type="checkbox" name="toppings" value="1">Topping 4</label>
             </div>
+            </div>
+            <span class="btn btn-primary" id="add-more-pizza">Add Another Pizza Pie</span>
+            <button type="submit" class="btn btn-info">Place Order</button>
 
-            <button type="submit" class="btn btn-info">Submit</button>
           </form>
         </div>
 
@@ -51,6 +52,5 @@
       </div>
 
     </div>
-
   </body>
 </html>
