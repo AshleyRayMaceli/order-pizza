@@ -1,8 +1,13 @@
 // Business Logic
+function AllOrders () {
+  this.pizzaTotal = [];
+}
+
 function Pizza (toppings, size, chosen) {
   this.pizzaToppings = toppings;
   this.pizzaSize = size;
   this.chosenToppings = chosen;
+  // this.pizzaTotal = [];
 }
 
 Pizza.prototype.costOfToppings = function (chosen, toppings) {
@@ -18,10 +23,17 @@ Pizza.prototype.costOfPizza = function (toppings, size) {
   return pizzaPrice;
 }
 
+function resetFields() {
+  $("select.new-pizza-size").val("");
+  $("input.checkbox").val();
+}
+
 // User Interface Logic
 $(document).ready(function(){
+
   $("#add-more-pizza").click(function(){
-    $("#another-pizza").append('<p>___________________________________</p>' +
+    $("#extra-pizzas").append('<p>___________________________________</p>' +
+                              '<div class="another-pizza">' +
                               '<select class="form-control new-pizza-size">' +
                                '<option id="size1" value="10">Small</option>' +
                                '<option id="size2" value="15">Medium</option>' +
@@ -39,6 +51,7 @@ $(document).ready(function(){
                                '</div>' +
                                '<div class="checkbox">' +
                                '<label><input type="checkbox" name="toppings" value="1">Topping 4</label>' +
+                               '</div>' +
                                '</div>'
     );
   });
@@ -46,15 +59,24 @@ $(document).ready(function(){
   $("#new-pizza-order").submit(function(event){
     event.preventDefault();
 
-    var inputtedPizzaSize = parseInt( $("select.new-pizza-size").val() );
-    var inputtedPizzaToppings = 0;
-    var checkedBoxes = document.getElementsByName("toppings");
+    $(".another-pizza").each(function() {
+      var inputtedPizzaSize = parseInt( $(this).find( $("select.new-pizza-size") ) .val());
+      var inputtedPizzaToppings = 0;
+      var checkedBoxes = $(this).find( document.getElementsByName("toppings") );
 
-    var newPizza = new Pizza(inputtedPizzaToppings, inputtedPizzaSize, checkedBoxes);
+      var newPizza = new Pizza(inputtedPizzaToppings, inputtedPizzaSize, checkedBoxes);
+      var newAllOrders = new AllOrders();
 
-    newPizza.costOfToppings()
+      newAllOrders.pizzaTotal.push(newPizza)
 
-    $("h1#pizza-price").text("$" + newPizza.costOfPizza());
-    $("#show-pizza-results").show();
+      newPizza.costOfToppings()
+
+      $("h1#pizza-price").append("$" + newPizza.costOfPizza());
+      $("#show-pizza-results").show();
+      console.log(newAllOrders.pizzaTotal);
+    });
+
+    // resetFields()
+
   });
 });
