@@ -13,28 +13,29 @@
 
       <div class="row">
         <div class="col-md-6">
-          <h2>Sizes:</h2>
+          <h2>Sizes</h2>
           <form id="new-pizza-order">
             <div id="extra-pizzas">
             <div class="another-pizza">
             <select class="form-control new-pizza-size">
-              <option id="size1" value="10">Small</option>
-              <option id="size2" value="15">Medium</option>
-              <option id="size3" value="20">Large</option>
+              <option id="size1" value="10">Small - $10</option>
+              <option id="size2" value="15">Medium - $15</option>
+              <option id="size3" value="20">Large - $20</option>
             </select>
 
-            <h2>Toppings:</h2>
+            <h2>Toppings</h2>
+            <h3>$1 extra for each topping</h3>
             <div class="checkbox">
-              <label><input type="checkbox" name="toppings" value="1">Topping 1</label>
+              <label><input type="checkbox" name="toppings" value="1">Extra Cheese</label>
             </div>
             <div class="checkbox">
-              <label><input type="checkbox" name="toppings" value="1">Topping 2</label>
+              <label><input type="checkbox" name="toppings" value="1">Mushrooms</label>
             </div>
             <div class="checkbox">
-              <label><input type="checkbox" name="toppings" value="1">Topping 3</label>
+              <label><input type="checkbox" name="toppings" value="1">Peppers</label>
             </div>
             <div class="checkbox">
-              <label><input type="checkbox" name="toppings" value="1">Topping 4</label>
+              <label><input type="checkbox" name="toppings" value="1">Sausage</label>
             </div>
             </div>
           </div>
@@ -47,7 +48,11 @@
         <div class="col-md-6">
           <div id="show-pizza-results">
             <h2>Your Pizza Price:</h2>
-            <h1 id="pizza-price"></h1>
+            <!-- <h1 id="pizza-price"></h1> -->
+            <div id="pizza-price">
+              <ul>
+              </ul>
+            </div>
           </div>
         </div>
 
